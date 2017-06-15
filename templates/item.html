@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="icon" href="{{ url_for('static', filename='udacity.png') }}">
+	<title> Catalog App </title>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='bootstrap.min.css')}}">
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='ie10-viewport-bug-workaround.css')}}">
+  <link rel=stylesheet type=text/css href="{{url_for('static', filename='jumbotron-narrow.css')}}">
+  </head>
+
+  <body>
+  	<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li>
+            {% if isLogin == False:%}
+              <a class="btn btn-lg btn-success" href="/login" role="button">Login</a>
+              {% else:%}
+              <a class="btn btn-lg btn-success" href="/gdisconnect" role="button">Logout</a>
+            {% endif%}
+            </li>
+          </ul>
+        </nav>
+        <a href="/" style="text-decoration: none"><h2 class="text-muted">Catalog App</h2></a>
+      </div>
+
+      <article>
+        <h4>{{item_name}}</h4>
+        <p>{{description}}</p>
+        {% if isAllow == True:%}
+          <p><a href='/catalog/{{category_name}}/{{item_name}}/{{item_id}}/edit')>Edit</a> | <a href='/catalog/{{category_name}}/{{item_name}}/{{item_id}}/delete'>Delete</a></p>
+        {%endif%}
+        <p><a href='/catalog/{{category_name}}/{{item_name}}/{{item_id}}/JSON')>JSON</a><p>
+      </article>
+
+     <footer class="footer">
+        <p>© Lijian Chen</p>
+     </footer>
+    </div>
+
+</body>
+</html>
